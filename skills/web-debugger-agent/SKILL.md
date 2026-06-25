@@ -27,7 +27,7 @@ The **diagnosis dispatcher** for the Build Web Apps plugin. Use it when the user
 ### 3) Reproduce
 - `agent-browser open <url>` (add `--enable react-devtools` if React-internal inspection is likely needed).
 - Drive to the failing state with `agent-browser snapshot` (accessibility tree + `@e` refs) then `agent-browser click @e…` / form commands. Prefer refs over coordinates.
-- `agent-browser screenshot <scratchpad>/repro.png`, then **Read the image** to confirm the symptom visually.
+- `agent-browser screenshot "${TMPDIR:-/tmp}/build-web-apps/repro.png"` (reuse this name — overwrite, don't pile up), then **Read the image** to confirm the symptom visually.
 
 ### 4) Capture the cheapest decisive evidence
 - **Console**: capture errors/warnings (agent-browser debugging/CDP mode; if unavailable on this version, grab console via the Playwright fallback).
@@ -52,4 +52,4 @@ Load the specialist skill and follow its workflow; pass along the URL, repro ste
 
 ## Output
 
-Lead with the **diagnosis** (what's wrong + root cause + evidence), then the **fix or the specialist you routed to**, then **verification status**. Keep raw logs out of the chat — cite the decisive lines only. Close the agent-browser session (`agent-browser close`) when done.
+Lead with the **diagnosis** (what's wrong + root cause + evidence), then the **fix or the specialist you routed to**, then **verification status**. Keep raw logs out of the chat — cite the decisive lines only. When done, close the agent-browser session (`agent-browser close`) and clean up this run's images: `bash "$CLAUDE_PLUGIN_ROOT/scripts/clean-shots.sh"` (or `rm -f "${TMPDIR:-/tmp}/build-web-apps/"*.png`).

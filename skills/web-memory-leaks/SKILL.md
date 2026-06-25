@@ -33,4 +33,4 @@ Read the snapshot's retainer path to name the holding reference and trace it bac
 
 ## Output
 
-Report: **verdict** (leak confirmed? growth per cycle), **the retained objects + retainer path**, **the root-cause line** (which mount/subscription/timer lacks cleanup), and the **fix** (add the cleanup, clear the timer, remove the listener, bound the cache). Re-run the cycle test after the fix to show the slope flatten. Capture snapshots/screenshots to the scratchpad and Read them; close the session when done.
+Report: **verdict** (leak confirmed? growth per cycle), **the retained objects + retainer path**, **the root-cause line** (which mount/subscription/timer lacks cleanup), and the **fix** (add the cleanup, clear the timer, remove the listener, bound the cache). Re-run the cycle test after the fix to show the slope flatten. Capture snapshots/screenshots to `${TMPDIR:-/tmp}/build-web-apps/` with reusable names (overwrite, don't accumulate) and Read them. When done, `agent-browser close` and clean up images: `bash "$CLAUDE_PLUGIN_ROOT/scripts/clean-shots.sh"` (or `rm -f "${TMPDIR:-/tmp}/build-web-apps/"*.png`).

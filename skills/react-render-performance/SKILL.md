@@ -26,7 +26,7 @@ Find *why* a React UI is slow and what to change. Browser backend is the **`agen
 - Tie each regression to a cause: large LCP element / blocking resource (LCP), layout shift from late content or missing dimensions (CLS), long event-handler/render work (INP).
 
 ### 4) Confirm the hotspot
-- Use the profiler to rank components by render cost. Screenshot the profile to a scratchpad file and Read it for the visual flame view.
+- Use the profiler to rank components by render cost. Screenshot the profile to `${TMPDIR:-/tmp}/build-web-apps/profile.png` (reusable name — overwrite) and Read it for the visual flame view.
 - Distinguish "renders too often" (identity/memo problem) from "each render is expensive" (heavy compute in render → move to `useMemo`/worker/server).
 
 ## Recommendations
@@ -40,4 +40,4 @@ Map findings to concrete fixes and cite `react-best-practices` for the canonical
 
 ## Output
 
-Report: **top offenders** (component → render count / cost → cause), **CWV table** (metric, value, target, cause), and a **prioritized fix list** (highest impact first) with the file/component to touch. Verify improvements by re-recording after the fix. Close the session when done.
+Report: **top offenders** (component → render count / cost → cause), **CWV table** (metric, value, target, cause), and a **prioritized fix list** (highest impact first) with the file/component to touch. Verify improvements by re-recording after the fix. When done, `agent-browser close` and clean up images: `bash "$CLAUDE_PLUGIN_ROOT/scripts/clean-shots.sh"` (or `rm -f "${TMPDIR:-/tmp}/build-web-apps/"*.png`).

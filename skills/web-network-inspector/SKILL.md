@@ -30,4 +30,4 @@ Connect a network finding to what the user feels: "search is slow" → the `/sea
 
 ## Output
 
-Report: **waterfall summary**, a **table of offenders** (request, status, total / TTFB / size, problem), the **worst-impact item with its UI symptom**, and **fixes** (parallelize/batch, add cache headers, paginate, compress, fix the failing endpoint, gate on auth). Capture the network view to the scratchpad and Read it if a visual helps. Close the session when done.
+Report: **waterfall summary**, a **table of offenders** (request, status, total / TTFB / size, problem), the **worst-impact item with its UI symptom**, and **fixes** (parallelize/batch, add cache headers, paginate, compress, fix the failing endpoint, gate on auth). Capture the network view to `${TMPDIR:-/tmp}/build-web-apps/network.png` (reusable name — overwrite) and Read it if a visual helps. When done, `agent-browser close` and clean up images: `bash "$CLAUDE_PLUGIN_ROOT/scripts/clean-shots.sh"` (or `rm -f "${TMPDIR:-/tmp}/build-web-apps/"*.png`).

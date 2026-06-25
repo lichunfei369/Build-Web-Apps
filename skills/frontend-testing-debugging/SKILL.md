@@ -66,7 +66,7 @@ Required sequence:
 2. Open the target: `agent-browser open <url>` (for React profiling work add `--enable react-devtools`).
 3. Read structure: `agent-browser snapshot` returns the accessibility tree with stable refs (`@e1`, `@e2`, …) — ~200–400 tokens vs a full DOM dump. Select elements by ref.
 4. Interact: `agent-browser click @e2`, form/typing commands for inputs (see `--help`). Prefer refs over pixel coordinates.
-5. Capture proof: `agent-browser screenshot <path.png>` to a file outside the repo (e.g. the scratchpad), then **Read the image file** to inspect it visually.
+5. Capture proof: `agent-browser screenshot "${TMPDIR:-/tmp}/build-web-apps/<name>.png"` (reusable names like `before`/`after` — overwrite, don't accumulate), then **Read the image file** to inspect it visually.
 6. After edits: re-`open` (or reload) the URL, then repeat the checks and the failing interaction.
 
 For each UI-changing action, collect the cheapest proof that the next state is correct: fresh snapshot, visible text/state, URL change, focused control, toast, modal, screenshot, or console/network signal.
@@ -129,13 +129,13 @@ Use this shape:
 
 If issues were found, lead with **Findings** before the summary. Each finding should include what the user sees, reproduction steps, screenshot/snapshot/console evidence, likely owner or file when known, and the fix made or remaining blocker.
 
-Save screenshots to files outside the repo and Read them so they can be referenced in chat. Include multiple screenshots when they help verify distinct states or flows.
+Save screenshots under `${TMPDIR:-/tmp}/build-web-apps/` (outside the repo) and Read them so they can be referenced in chat. Reuse names to avoid pile-up; include multiple only when they verify distinct states or flows.
 
 Do not interleave screenshots throughout the written report. Put a short **Screenshots** section at the very end, and make it a consecutive image gallery with one image per line. Add short labels only when they clarify the state, for example `Before`, `After`, `Filtered results`, `Empty state`, or `Mobile`.
 
 Do not create separate HTML reports by default. Only create a standalone report file when the user explicitly asks for one, and write it outside the repo unless the user explicitly asks for committed artifacts.
 
-Do not write reports, screenshots, traces, or temporary scripts into the repo unless the user explicitly asks for committed artifacts.
+Do not write reports, screenshots, traces, or temporary scripts into the repo unless the user explicitly asks for committed artifacts. After handoff, clean up temp screenshots: `bash "$CLAUDE_PLUGIN_ROOT/scripts/clean-shots.sh"` (or `rm -f "${TMPDIR:-/tmp}/build-web-apps/"*.png`).
 
 ## Related Skills
 

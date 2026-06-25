@@ -87,6 +87,12 @@ claude plugin details build-web-apps   # 应显示 14 个 skill、1 个 hook、0
 - 用 **agent-browser 截图**(`agent-browser screenshot`)存到仓库外,再用 **Read 打开 PNG 查看**——因为 agent-browser 跑的是它自己的 Chromium,我看不到那个窗口,只能读取保存下来的截图文件。
 - 子命令 flag 因版本而异,以 `agent-browser --help` 为准。
 
+### 截图与临时文件(不会堆积)
+- 所有截图/临时图写到 **`$TMPDIR/build-web-apps/`** —— 在系统临时目录,**不在你的项目里、不进 git**。
+- 用**固定语义文件名**(`repro.png` / `before.png` / `after.png` / `profile.png`…)并**覆盖而非新增** → 文件数**恒定**,不随截图次数增长。
+- 任务结束时诊断 skill 会 `agent-browser close` 并清理本次截图;你也可随时一键清:`bash scripts/clean-shots.sh`。
+- macOS 还会定期回收 `$TMPDIR`,即便忘了清也不会长期堆积。
+
 ### 用法一:直接说需求(最省心)
 在某个 React 项目里直接描述,插件会自动触发对应 skill:
 ```
@@ -213,6 +219,12 @@ claude plugin details build-web-apps   # 14 skills, 1 hook, 0 MCP
 - **Playwright** is the fallback for missing capabilities.
 - Take screenshots **with agent-browser** (`agent-browser screenshot`) to a path outside the repo, then **Read the PNG** to inspect it — agent-browser runs its own Chromium that the agent can't see, so it reads the saved file instead.
 - Flags vary by version — confirm with `agent-browser --help`.
+
+### Screenshots & temp files (no pile-up)
+- All screenshots/temp images go to **`$TMPDIR/build-web-apps/`** — the system temp dir, **never your project, never git**.
+- Use **fixed semantic names** (`repro.png` / `before.png` / `after.png` / `profile.png`…) and **overwrite** instead of adding files → the count stays constant no matter how many shots you take.
+- On finish, diagnosis skills `agent-browser close` and clean their screenshots; you can also clear them anytime: `bash scripts/clean-shots.sh`.
+- macOS reclaims `$TMPDIR` periodically too, so even un-cleaned shots don't accumulate long-term.
 
 ### Way 1: just describe the task
 ```

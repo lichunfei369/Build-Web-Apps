@@ -31,4 +31,4 @@ Explain *why the UI shows the state it shows*. Browser backend is the **`agent-b
 
 ## Output
 
-Report: **the state at the failing moment** (slice dump), **the classification**, **the root cause** (selector / reducer / cache key / dependency), and the **fix** (correct the selector, immutably update, invalidate the query, fix deps). Cross-link `react-render-performance` if the symptom is excessive re-rendering. Close the session when done.
+Report: **the state at the failing moment** (slice dump), **the classification**, **the root cause** (selector / reducer / cache key / dependency), and the **fix** (correct the selector, immutably update, invalidate the query, fix deps). Cross-link `react-render-performance` if the symptom is excessive re-rendering. When done, `agent-browser close` and clean up any images: `bash "$CLAUDE_PLUGIN_ROOT/scripts/clean-shots.sh"` (or `rm -f "${TMPDIR:-/tmp}/build-web-apps/"*.png`).

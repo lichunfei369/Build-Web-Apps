@@ -12,7 +12,7 @@ Turn raw errors into a **root cause**. Browser backend is the **`agent-browser` 
 ### 1) Capture everything the page emits
 - `agent-browser open <url>`, drive to the failing state.
 - Collect: uncaught exceptions, unhandled promise rejections, `console.error`/`warn`, framework error overlays (Next/Vite/Webpack), and failed/4xx/5xx network responses (these often *cause* the JS error).
-- Screenshot the overlay/broken UI to the scratchpad and Read it.
+- Screenshot the overlay/broken UI to `${TMPDIR:-/tmp}/build-web-apps/error.png` (reusable name — overwrite) and Read it.
 
 ### 2) Reconstruct minified stacks with source maps
 A production stack like `at t (main.4f2a.js:1:88421)` is useless until mapped.
@@ -29,4 +29,4 @@ For the top cluster, state: the original throwing line, the value/condition that
 
 ## Output
 
-Report per top cluster: **signature + count**, **reconstructed stack (real files)**, **trigger**, **root cause**, **fix**, and whether an **error boundary / rejection handler** is missing. Keep noisy raw logs out of chat — cite the decisive frames only. Close the session when done.
+Report per top cluster: **signature + count**, **reconstructed stack (real files)**, **trigger**, **root cause**, **fix**, and whether an **error boundary / rejection handler** is missing. Keep noisy raw logs out of chat — cite the decisive frames only. When done, `agent-browser close` and clean up images: `bash "$CLAUDE_PLUGIN_ROOT/scripts/clean-shots.sh"` (or `rm -f "${TMPDIR:-/tmp}/build-web-apps/"*.png`).

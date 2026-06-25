@@ -32,4 +32,4 @@ Confirm flags with `agent-browser --help`.
 
 ## Output
 
-Report: **violation table** (rule, impact, element `@ref`, fix), a short **keyboard/focus findings** list, and the **prioritized fixes** (critical first) with the file/component to touch. Note that automated tools catch ~30–40% of issues — call out what still needs human/AT verification. Close the session when done.
+Report: **violation table** (rule, impact, element `@ref`, fix), a short **keyboard/focus findings** list, and the **prioritized fixes** (critical first) with the file/component to touch. Note that automated tools catch ~30–40% of issues — call out what still needs human/AT verification. When done, `agent-browser close` and clean up any images: `bash "$CLAUDE_PLUGIN_ROOT/scripts/clean-shots.sh"` (or `rm -f "${TMPDIR:-/tmp}/build-web-apps/"*.png`).
