@@ -84,7 +84,7 @@ claude plugin details build-web-apps   # 应显示 14 个 skill、1 个 hook、0
 ### 浏览器后端铁律(所有 skill 共用)
 - 唯一交互后端是 **agent-browser**(禁用 claude-in-chrome)。
 - 缺能力时兜底 **Playwright**。
-- 截图存到仓库外,再用 **Read 看图**。
+- 用 **agent-browser 截图**(`agent-browser screenshot`)存到仓库外,再用 **Read 打开 PNG 查看**——因为 agent-browser 跑的是它自己的 Chromium,我看不到那个窗口,只能读取保存下来的截图文件。
 - 子命令 flag 因版本而异,以 `agent-browser --help` 为准。
 
 ### 用法一:直接说需求(最省心)
@@ -211,7 +211,7 @@ claude plugin details build-web-apps   # 14 skills, 1 hook, 0 MCP
 ### Browser-backend rule (every skill)
 - **agent-browser** is the only interaction backend (claude-in-chrome is disabled here).
 - **Playwright** is the fallback for missing capabilities.
-- Screenshots go outside the repo; Read the image file to inspect it.
+- Take screenshots **with agent-browser** (`agent-browser screenshot`) to a path outside the repo, then **Read the PNG** to inspect it — agent-browser runs its own Chromium that the agent can't see, so it reads the saved file instead.
 - Flags vary by version — confirm with `agent-browser --help`.
 
 ### Way 1: just describe the task
