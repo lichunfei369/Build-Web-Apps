@@ -1,7 +1,7 @@
 {
   "name": "build-web-apps",
   "version": "0.1.0",
-  "description": "Build, debug, and harden React web apps on a single agent-browser backend: deep debugging, render performance, memory leaks, error forensics, network inspection, accessibility, and state debugging — plus migrated build skills (frontend-app-builder, react/shadcn/stripe/supabase best practices). Adapted for Claude Code from OpenAI's Codex 'Build Web Apps' plugin.",
+  "description": "Build, debug, and harden React web apps on a single agent-browser backend: deep debugging, render performance, memory leaks, error forensics, network inspection, accessibility, and state debugging — plus build skills (frontend-app-builder, react/shadcn/stripe/supabase best practices).",
   "author": {
     "name": "lichunfei"
   },

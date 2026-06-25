@@ -9,7 +9,7 @@
     {
       "name": "build-web-apps",
       "source": "./",
-      "description": "Build, debug, and harden React web apps on a single agent-browser backend. Adapted for Claude Code from OpenAI's Codex 'Build Web Apps'.",
+      "description": "Build, debug, and harden React web apps on a single agent-browser backend.",
       "license": "MIT",
       "keywords": [
         "web",

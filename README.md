@@ -6,7 +6,7 @@
 
 # Build Web Apps · React 全栈开发与诊断插件
 
-一个 Claude Code 插件:从 OpenAI Codex 的 *Build Web Apps* 移植而来,并扩展了一整套**诊断套件**,统一以 [`agent-browser`](https://agent-browser.dev) CLI 作为**唯一浏览器后端**,专注 **React** 应用的构建、调试、性能、内存、错误、网络、可访问性与状态问题。
+一个 Claude Code 插件,提供一整套**诊断套件**,统一以 [`agent-browser`](https://agent-browser.dev) CLI 作为**唯一浏览器后端**,专注 **React** 应用的构建、调试、性能、内存、错误、网络、可访问性与状态问题。
 
 > 姊妹项目:[Build-iOS-Apps](https://github.com/lichunfei369/Build-iOS-Apps) —— 同样的打包模式,iOS 版。
 
@@ -141,7 +141,7 @@ claude plugin details build-web-apps   # 应显示 14 个 skill、1 个 hook、0
 
 # Build Web Apps · React build & diagnosis plugin
 
-A Claude Code plugin, adapted from OpenAI Codex's *Build Web Apps* and extended with a full **diagnosis suite**, driven by a single browser backend — the [`agent-browser`](https://agent-browser.dev) CLI. Focused on building, debugging, profiling, and hardening **React** apps.
+A Claude Code plugin providing a full **diagnosis suite**, driven by a single browser backend — the [`agent-browser`](https://agent-browser.dev) CLI. Focused on building, debugging, profiling, and hardening **React** apps.
 
 > Sibling of [Build-iOS-Apps](https://github.com/lichunfei369/Build-iOS-Apps) — same packaging model, web edition.
 

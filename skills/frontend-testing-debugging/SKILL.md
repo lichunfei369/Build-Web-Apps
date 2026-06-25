@@ -5,7 +5,7 @@ description: "Use when testing, debugging, or making targeted improvements to re
 
 # Frontend Testing Debugging
 
-> **Build Web Apps adaptation:** This skill was authored for Codex (an `agent.browser.*` REPL) and later adapted to claude-in-chrome. In **this plugin the browser backend is the `agent-browser` CLI** (https://agent-browser.dev) — a single Chromium it launches itself. Every "Browser" reference below means agent-browser. **Do not use claude-in-chrome here** (it would drive a second, conflicting Chrome instance). The Playwright fallback is unchanged.
+> **Browser backend:** In this plugin the browser backend is the **`agent-browser` CLI** (https://agent-browser.dev) — a single Chromium it launches itself. Every "Browser" reference below means agent-browser. **Do not use claude-in-chrome here** (it would drive a second, conflicting Chrome instance). The Playwright fallback is unchanged.
 >
 > This is the **general QA / regression-verification** skill (run it to confirm a code change renders correctly). For *problem-driven* deep diagnosis use `web-debugger-agent`, which can call this skill to verify a fix.
 

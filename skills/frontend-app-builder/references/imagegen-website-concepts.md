@@ -57,7 +57,7 @@ Before writing the Image Gen brief, choose a compact visual direction that fits 
 
 ## Image Count And Clarity
 
-Inside Codex, readability and extraction quality outrank compact presentation.
+Readability and extraction quality outrank compact presentation.
 
 - For a 1-section request, generate 1 primary section concept. For 2-10 requested or implied sections, default to 2-10 coordinated primary section concepts, one fresh image per major section, when that improves readability.
 - Use an optional full-page overview only for overall rhythm, section order, and transition logic. Do not treat the overview as the only implementation spec if it compresses text, buttons, cards, or spacing.

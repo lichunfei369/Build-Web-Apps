@@ -9,16 +9,14 @@ Use this skill to create polished frontend apps, dashboards, games, creative web
 
 ## Claude Code Adaptation
 
-This skill was authored for Codex. In Claude Code, map its Codex-specific tools and capabilities as follows. **This mapping governs every mention of them below:**
+Map the following tools and capabilities to Claude Code. **This mapping governs every mention of them below:**
 
 - **Image Gen** → Claude Code has **no built-in image generation**. For the visual concept, prefer the user's reference images / screenshots / Figma, and drive visual direction with an installed design skill (`impeccable`, `frontend-design`, or `ui-ux-pro-max`). Where the text says to "generate with Image Gen" an asset (logo, product render, hero imagery, game sprite/tile), use production-quality SVG/CSS or user-supplied assets and record the substitution — **unless** an image-generation MCP/tool is connected, in which case use it as written.
 - **`view_image` comparison** → use the **Read tool** to open the concept image and the latest browser screenshot, then judge them side by side. This image comparison is still mandatory before handoff; it cannot be replaced by browser inspection alone.
 - **`request_user_input` / plan-mode approval** → use **AskUserQuestion** (or **ExitPlanMode** for plan approval).
-- **Browser plugin / IAB (in-app browser)** → use the **`claude-in-chrome`** skill (`mcp__claude-in-chrome__*`). Fall back to Playwright Chromium only when claude-in-chrome is unavailable or unreliable, and state the reason.
+- **Browser plugin / IAB (in-app browser)** → use the **`agent-browser` CLI** (this plugin's sole browser backend; do **not** use claude-in-chrome — it would drive a second, conflicting Chrome). Fall back to Playwright only when agent-browser is unavailable or unreliable, and state the reason.
 - **`@imagegen` skill** → see the Image Gen mapping above; `references/imagegen-website-concepts.md` still works as a briefing reference when image generation is available.
 - **`openai-developers:openai-platform-api-key`** → use the project's existing provider-credential mechanism; never write fake keys or placeholder env vars.
-- **"Inside Codex"** → read as "in Claude Code".
-
 Everything else below — the design-quality, fidelity, and verification standards — is platform-agnostic. Follow it as written.
 
 ## Core Standard
@@ -32,14 +30,14 @@ The two priorities of this skill outrank everything else:
 
 1. Use Image Gen for the visual concept unless the user explicitly opts out or the task is a small UI fix inside an existing design system.
 2. Design the complete requested surface before coding. For a full page, app, dashboard, game, or product interface, a header or hero concept is not enough. For multi-section websites and long landing pages, prefer coordinated section-by-section concepts, plus an optional overview for rhythm, over one tall image that loses detail. For apps, dashboards, games, or compact product surfaces, generate the full primary screen plus any needed state, responsive, or asset concepts first.
-3. Inside Codex, default multi-section website concepting to one fresh, large, readable Image Gen screenshot per major section. If the request has 1-10 sections, expect roughly 1-10 primary section images. Generate additional section/detail screenshots whenever text, buttons, card anatomy, typography, spacing, or colors are too small to extract. Do not crop or zoom an old full-page image as the main reference; regenerate a fresh standalone section or detail image that preserves the same design system.
+3. Default multi-section website concepting to one fresh, large, readable Image Gen screenshot per major section. If the request has 1-10 sections, expect roughly 1-10 primary section images. Generate additional section/detail screenshots whenever text, buttons, card anatomy, typography, spacing, or colors are too small to extract. Do not crop or zoom an old full-page image as the main reference; regenerate a fresh standalone section or detail image that preserves the same design system.
 4. In Plan mode, generate the design first, then use `request_user_input` to get design approval before planning implementation details.
 5. Once accepted, the concept is a production design spec. No creative liberties during implementation: do not reinterpret layout, visible copy, hierarchy, container model, styling, imagery, density, or sections unless the user approves it or a concrete blocker requires it. General design heuristics never override the accepted concept.
 6. The completion bar is agency-signoff faithful implementation: 10/10 fidelity to the accepted spec plus production-quality code. If the browser-rendered UI would receive design-review comments, keep fixing it.
 7. Before coding, build a small design system from the accepted image: tokens, typography, component families, variants, spacing, icon treatment, and container rules. Include both content typography and UI chrome typography for tools, editors, and dashboards. Implement from that system so repeated elements stay consistent.
 8. For new complex app UIs such as dashboards, admin tools, editors, data-heavy tools, and multi-panel product surfaces, default to React + Vite unless the user specifies another framework, the existing repo already dictates one, or the task is explicitly a single-file/static deliverable.
 9. Hero eyebrow, kicker, pretitle, badge, or pill labels above the main heading are prohibited by default. Use one only when the user explicitly requested it or the accepted/reference design already contains it.
-10. Verify in the Browser plugin / built-in browser first. Use Playwright Chromium only when Browser/IAB is unavailable or unreliable, and state the fallback reason.
+10. Verify in agent-browser first. Use Playwright only when agent-browser is unavailable or unreliable, and state the fallback reason.
 11. Final handoff is blocked until you use `view_image` on both the accepted concept and the latest browser screenshot. This cannot be skipped or replaced with browser inspection alone. Judge the pair directly: is this agency-signoff faithfully implemented, and would a great, highly skilled design agency sign off on this exact implementation of the accepted design? If not, keep fixing.
 12. Remove temporary QA artifacts before handoff unless the user or task explicitly asks to keep them.
 
