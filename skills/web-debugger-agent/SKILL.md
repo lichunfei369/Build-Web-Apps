@@ -11,6 +11,7 @@ The **diagnosis dispatcher** for the Build Web Apps plugin. Use it when the user
 
 - The only browser is the **`agent-browser` CLI** (https://agent-browser.dev). It launches its own Chromium.
 - **Never** use claude-in-chrome here — it would drive a second Chrome against the same dev server.
+- **Headed vs headless**: agent-browser runs **headless by default** in its own background Chromium (not the user's everyday Chrome window), so the user can't watch it — screenshots/snapshots still work for evidence. Pass `--headed` to `open` (or set the `AGENT_BROWSER_HEADED` env var) to pop a **visible** window when the user wants to watch the automation live; later commands in the same session reuse that window. Default to headless; switch to headed only when the user asks to *see* the operation.
 - Fallback is **Playwright** only when agent-browser is absent or lacks a needed capability.
 - Exact flags vary by version; confirm with `agent-browser --help`.
 

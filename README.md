@@ -75,6 +75,7 @@ claude plugin details build-web-apps   # 应显示 14 个 skill、1 个 hook、0
 - 唯一交互后端是 **agent-browser**(禁用 claude-in-chrome)。
 - 缺能力时兜底 **Playwright**。
 - 用 **agent-browser 截图**(`agent-browser screenshot`)存到仓库外,再用 **Read 打开 PNG 查看**——因为 agent-browser 跑的是它自己的 Chromium,我看不到那个窗口,只能读取保存下来的截图文件。
+- **有头 / 无头模式**:agent-browser **默认无头(headless)**,在自带的独立后台 Chromium 里跑(不是你日常那个 Chrome 窗口),所以你**看不到操作过程**——但截图/快照取证一切正常,这也是上一条要靠 PNG 文件核对的原因。需要**实时观看**自动化时,`open` 加 `--headed`(或设环境变量 `AGENT_BROWSER_HEADED`)弹出可见窗口,同一会话后续命令沿用该窗口;默认无头即可,仅在你想"看到操作"时切有头。
 - 子命令 flag 因版本而异,以 `agent-browser --help` 为准。
 
 ### 截图与临时文件(不会堆积)
