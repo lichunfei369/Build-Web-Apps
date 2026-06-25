@@ -36,8 +36,8 @@ For any code change to a rendered frontend surface, do the validation loop by de
 
 First classify browser availability:
 
-- **Available**: the `agent-browser` CLI is on `PATH` (`agent-browser --version` succeeds). On first ever use Chrome is fetched with `agent-browser install`. This is the default path.
-- **Absent**: `agent-browser` is not installed. Tell the user once how to install it (`npm i -g agent-browser` or `brew install agent-browser`, then `agent-browser install`). If they decline or it cannot be installed, use regular Playwright and record `agent-browser not available`.
+- **Available**: `agent-browser --version` succeeds. This is the default path (its Chromium is fetched automatically on first use).
+- **Absent**: `agent-browser` is not on PATH. Auto-install it with `bash "$CLAUDE_PLUGIN_ROOT/scripts/ensure-agent-browser.sh"` (idempotent; downloads Chrome on first run). Only if that errors (no Node/npm, or npm permissions) fall back to regular Playwright and record `agent-browser not available`.
 - **Invocation failed**: `agent-browser` is installed but `open`/`snapshot` fails (Chrome download blocked, sandbox, port). Treat this as a browser-path blocker, report the exact failure, and only then consider Playwright.
 
 Do not launch claude-in-chrome, an external Chrome, or shell `open` first when agent-browser is available.

@@ -5,7 +5,7 @@ description: "Debug client state in React apps — Redux, Zustand, React Query /
 
 # React State Debugging
 
-Explain *why the UI shows the state it shows*. Browser backend is the **`agent-browser` CLI**; read store state by injecting `scripts/read-store.js` (via agent-browser init-script / eval). This is **best-effort** — it depends on the app exposing a store and on eval being available; otherwise fall back to Playwright eval or temporary in-app logging. Confirm flags with `agent-browser --help`.
+Explain *why the UI shows the state it shows*. Browser backend is the **`agent-browser` CLI**; read store state by injecting `scripts/read-store.js` (via agent-browser init-script / eval). This is **best-effort** — it depends on the app exposing a store and on eval being available; otherwise fall back to Playwright eval or temporary in-app logging. If agent-browser isn't installed, run `bash "$CLAUDE_PLUGIN_ROOT/scripts/ensure-agent-browser.sh"` first (auto-installs it). Confirm flags with `agent-browser --help`.
 
 ## Workflow
 

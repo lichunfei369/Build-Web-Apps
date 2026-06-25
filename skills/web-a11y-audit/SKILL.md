@@ -10,7 +10,7 @@ Audit a rendered UI for accessibility. Browser backend is the **`agent-browser` 
 1. **Accessibility snapshot (free):** `agent-browser snapshot` already returns the accessibility tree with roles/names and `@e` refs — use it to judge semantics, names, and structure directly.
 2. **axe-core deep pass (best-effort):** inject `scripts/inject-axe.js` (via agent-browser's init-script / eval) to run a WCAG ruleset and collect violations. If injection isn't supported on the installed version, fall back to Playwright + `@axe-core/playwright`, or do the manual checks below.
 
-Confirm flags with `agent-browser --help`.
+If agent-browser isn't installed, run `bash "$CLAUDE_PLUGIN_ROOT/scripts/ensure-agent-browser.sh"` first (auto-installs it). Confirm flags with `agent-browser --help`.
 
 ## What to check
 

@@ -5,7 +5,7 @@ description: "Inspect a web app's network layer — slow requests, failed/4xx/5x
 
 # Web Network Inspector
 
-Understand and fix what a web app does over the network. Browser backend is the **`agent-browser` CLI** network inspection (`/network`); Playwright fallback otherwise. Confirm flags with `agent-browser --help`.
+Understand and fix what a web app does over the network. Browser backend is the **`agent-browser` CLI** network inspection (`/network`); Playwright fallback otherwise. If agent-browser isn't installed, run `bash "$CLAUDE_PLUGIN_ROOT/scripts/ensure-agent-browser.sh"` first (auto-installs it). Confirm flags with `agent-browser --help`.
 
 ## Workflow
 

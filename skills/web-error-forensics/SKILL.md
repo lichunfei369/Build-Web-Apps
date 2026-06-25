@@ -5,7 +5,7 @@ description: "Capture and analyze web app errors — uncaught exceptions, unhand
 
 # Web Error Forensics
 
-Turn raw errors into a **root cause**. Browser backend is the **`agent-browser` CLI**; if its version can't stream console, capture console/errors via the Playwright fallback. Confirm flags with `agent-browser --help`.
+Turn raw errors into a **root cause**. Browser backend is the **`agent-browser` CLI**; if its version can't stream console, capture console/errors via the Playwright fallback. If agent-browser isn't installed, run `bash "$CLAUDE_PLUGIN_ROOT/scripts/ensure-agent-browser.sh"` first (auto-installs it). Confirm flags with `agent-browser --help`.
 
 ## Workflow
 

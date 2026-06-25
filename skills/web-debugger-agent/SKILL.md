@@ -16,8 +16,8 @@ The **diagnosis dispatcher** for the Build Web Apps plugin. Use it when the user
 
 ## Workflow
 
-### 1) Readiness
-- `agent-browser --version`. If missing, tell the user once: `npm i -g agent-browser` (or `brew install agent-browser`), then `agent-browser install`. Don't hard-fail silently.
+### 1) Readiness (auto — zero manual setup)
+- Run `bash "$CLAUDE_PLUGIN_ROOT/scripts/ensure-agent-browser.sh"`. It is idempotent: if agent-browser is missing it installs the CLI and warms up Chromium (first run may take a few minutes to download Chrome); if already present it returns instantly. Only if it errors (no Node/npm, or npm permissions) surface the message and stop — don't hard-fail silently.
 
 ### 2) Find or start the dev server
 - Read `package.json` scripts (`dev`, `start`). Detect the framework (Vite / Next / CRA / Remix).

@@ -5,7 +5,7 @@ description: "Hunt browser memory leaks in web apps — growing heap across navi
 
 # Web Memory Leaks
 
-Prove and locate memory leaks with a disciplined **baseline → exercise → compare** method. Browser backend is the **`agent-browser` CLI** (profiler / CDP). If the installed version can't take heap snapshots, fall back to driving Chrome via Playwright + CDP `HeapProfiler`. Confirm flags with `agent-browser --help`.
+Prove and locate memory leaks with a disciplined **baseline → exercise → compare** method. Browser backend is the **`agent-browser` CLI** (profiler / CDP). If the installed version can't take heap snapshots, fall back to driving Chrome via Playwright + CDP `HeapProfiler`. If agent-browser isn't installed, run `bash "$CLAUDE_PLUGIN_ROOT/scripts/ensure-agent-browser.sh"` first (auto-installs it). Confirm flags with `agent-browser --help`.
 
 ## Method (don't eyeball — diff)
 

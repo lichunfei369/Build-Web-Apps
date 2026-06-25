@@ -5,7 +5,7 @@ description: "Diagnose React render performance — wasted re-renders, expensive
 
 # React Render Performance
 
-Find *why* a React UI is slow and what to change. Browser backend is the **`agent-browser` CLI** only (Playwright fallback). Confirm flags with `agent-browser --help`.
+Find *why* a React UI is slow and what to change. Browser backend is the **`agent-browser` CLI** only (Playwright fallback). If it isn't installed, run `bash "$CLAUDE_PLUGIN_ROOT/scripts/ensure-agent-browser.sh"` first (auto-installs it). Confirm flags with `agent-browser --help`.
 
 ## Workflow
 

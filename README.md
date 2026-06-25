@@ -43,28 +43,18 @@
 - 需要 Node.js ≥ 18(自带 npm)。检查:`node -v` 与 `npm -v`。
 - 没装的话到 https://nodejs.org 装 LTS 版。
 
-### 前置 2:agent-browser 浏览器后端
+### 前置 2:agent-browser 浏览器后端(**通常无需手动装**)
 
-**macOS**
-```bash
-# 二选一
-brew install agent-browser
-# 或
-npm install -g agent-browser
+**插件会在首次使用浏览器功能时自动安装 agent-browser**:各 skill 的就绪检测会调用 `scripts/ensure-agent-browser.sh`(幂等),没装就自动装好 CLI 并预热 Chromium。所以**换设备装上插件后,第一次跑 `/webgo` 等浏览器任务会自动就绪,你不用敲任何命令**(首次下载 Chrome 会花几分钟)。一进会话若检测到没装,SessionStart 也会提示一句。
 
-agent-browser install      # 首次运行,下载 Chrome
-agent-browser --version    # 验证就绪
-```
+需要的话也可**手动预装**(可选):
+- **macOS**:`npm i -g agent-browser`(或 `brew install agent-browser`)
+- **Windows**(PowerShell):`npm i -g agent-browser`
+- 临时用、不全局装:`npx agent-browser <命令>`
+- 一键预装脚本:`bash scripts/ensure-agent-browser.sh`
+- 验证:`agent-browser --version`
 
-**Windows**(PowerShell)
-```powershell
-# Windows 无 brew,用 npm
-npm install -g agent-browser
-
-agent-browser install      # 首次运行,下载 Chrome
-agent-browser --version    # 验证就绪
-```
-> 不想全局安装也可以用 `npx agent-browser <命令>` 临时运行。
+> 仍需 Node.js ≥ 18(前置 1)。自动安装失败(没 Node/npm、或 npm 权限)会给出提示,届时按提示手动装即可。
 
 ### 安装本插件(两平台命令一致)
 ```bash
@@ -182,22 +172,18 @@ A Claude Code plugin providing a full **diagnosis suite**, driven by a single br
 ### Prerequisite 1: Node.js (both platforms)
 Node.js ≥ 18 (ships npm). Check with `node -v` / `npm -v`; install the LTS from https://nodejs.org if missing.
 
-### Prerequisite 2: the agent-browser backend
+### Prerequisite 2: the agent-browser backend (**usually no manual install**)
 
-**macOS**
-```bash
-brew install agent-browser     # or: npm install -g agent-browser
-agent-browser install          # first run downloads Chrome
-agent-browser --version
-```
+**The plugin auto-installs agent-browser on first browser use** — every skill's readiness step calls `scripts/ensure-agent-browser.sh` (idempotent), which installs the CLI and warms up Chromium if missing. So on a fresh machine you just install the plugin and the first `/webgo` (or any browser task) sets it up with **zero manual steps** (the one-time Chrome download takes a few minutes). A SessionStart hook also nudges once if it's not yet installed.
 
-**Windows** (PowerShell)
-```powershell
-npm install -g agent-browser   # no brew on Windows
-agent-browser install          # first run downloads Chrome
-agent-browser --version
-```
-> Or run ad-hoc with `npx agent-browser <command>` without a global install.
+Optionally pre-install it yourself:
+- **macOS**: `npm i -g agent-browser` (or `brew install agent-browser`)
+- **Windows** (PowerShell): `npm i -g agent-browser`
+- Ad-hoc, no global install: `npx agent-browser <command>`
+- One-shot pre-install script: `bash scripts/ensure-agent-browser.sh`
+- Verify: `agent-browser --version`
+
+> Still needs Node.js ≥ 18 (Prerequisite 1). If auto-install fails (no Node/npm, or npm permissions) it surfaces the error so you can install manually.
 
 ### Install the plugin (same on both platforms)
 ```bash

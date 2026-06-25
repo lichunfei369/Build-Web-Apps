@@ -10,7 +10,7 @@ argument-hint: "[build|debug|perf|memory|error|network|a11y|state] 可选意图,
 ## 浏览器后端铁律(所有 skill 共用)
 
 - 唯一交互后端是 **`agent-browser` CLI**(它自带 Chromium)。**禁止使用 claude-in-chrome**(会和它抢同一个 dev server,起两个冲突的 Chrome)。
-- agent-browser 缺失或某能力不支持时,兜底用 **Playwright**。
+- 首次使用没装 agent-browser 时,skill 会自动运行 `scripts/ensure-agent-browser.sh` 装好(零手动);该脚本失败或某能力不支持时才兜底用 **Playwright**。
 - 截图统一存到 `${TMPDIR:-/tmp}/build-web-apps/`(仓库外),用**固定语义文件名**(repro/before/after…,覆盖而非堆积),再用 **Read 看图**;任务结束 `agent-browser close` 并跑 `scripts/clean-shots.sh` 清理。
 - 子命令 flag 因版本而异,以 `agent-browser --help` 为准。
 
