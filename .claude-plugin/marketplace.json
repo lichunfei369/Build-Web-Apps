@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "build-web-apps-local",
+  "description": "Local marketplace hosting the build-web-apps Claude Code plugin (React web dev: build + deep debug / performance / memory / error / network / a11y / state, driven by the agent-browser CLI).",
+  "owner": {
+    "name": "lichunfei"
+  },
+  "plugins": [
+    {
+      "name": "build-web-apps",
+      "source": "./",
+      "description": "Build, debug, and harden React web apps on a single agent-browser backend. Adapted for Claude Code from OpenAI's Codex 'Build Web Apps'.",
+      "license": "MIT",
+      "keywords": [
+        "web",
+        "react",
+        "nextjs",
+        "frontend",
+        "debugging",
+        "performance",
+        "memory",
+        "accessibility"
+      ]
+    }
+  ]
+}
