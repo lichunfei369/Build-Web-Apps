@@ -1,6 +1,6 @@
 {
   "name": "build-web-apps",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Build, debug, and harden React web apps on a single agent-browser backend: deep debugging, render performance, memory leaks, error forensics, network inspection, accessibility, and state debugging — plus build skills (frontend-app-builder, react/shadcn/stripe/supabase best practices).",
   "author": {
     "name": "lichunfei"
